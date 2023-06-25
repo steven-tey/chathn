@@ -1,5 +1,12 @@
 import { Configuration, OpenAIApi } from "openai-edge";
 import { OpenAIStream, StreamingTextResponse } from "ai";
+import {
+  functions,
+  get_top_stories,
+  get_story,
+  get_story_with_comments,
+  summarize_top_story,
+} from "./functions";
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
@@ -8,113 +15,6 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 export const runtime = "edge";
-
-const functions: {
-  name: string;
-  description: string;
-  parameters: object;
-}[] = [
-  {
-    name: "get_top_stories",
-    description:
-      "Get the top stories from Hacker News. Also returns the Hacker News URL to each story.",
-    parameters: {
-      type: "object",
-      properties: {
-        limit: {
-          type: "number",
-          description: "The number of stories to return. Defaults to 10.",
-        },
-      },
-      required: [],
-    },
-  },
-  {
-    name: "get_story",
-    description:
-      "Get a story from Hacker News. Also returns the Hacker News URL to the story.",
-    parameters: {
-      type: "object",
-      properties: {
-        id: {
-          type: "number",
-          description: "The ID of the story",
-        },
-      },
-      required: ["id"],
-    },
-  },
-  {
-    name: "get_story_with_comments",
-    description:
-      "Get a story from Hacker News with comments.  Also returns the Hacker News URL to the story and each comment.",
-    parameters: {
-      type: "object",
-      properties: {
-        id: {
-          type: "number",
-          description: "The ID of the story",
-        },
-      },
-      required: ["id"],
-    },
-  },
-  {
-    name: "summarize_top_story",
-    description:
-      "Summarize the top story from Hacker News, including both the story and its comments. Also returns the Hacker News URL to the story and each comment.",
-    parameters: {
-      type: "object",
-      properties: {},
-      required: [],
-    },
-  },
-];
-
-async function get_top_stories(limit: number = 10) {
-  const response = await fetch(
-    "https://hacker-news.firebaseio.com/v0/topstories.json",
-  );
-  const ids = await response.json();
-  const stories = await Promise.all(
-    ids.slice(0, limit).map((id: number) => get_story(id)),
-  );
-  return stories;
-}
-
-async function get_story(id: number) {
-  const response = await fetch(
-    `https://hacker-news.firebaseio.com/v0/item/${id}.json`,
-  );
-  const data = await response.json();
-  return {
-    ...data,
-    hnUrl: `https://news.ycombinator.com/item?id=${id}`,
-  };
-}
-
-async function get_story_with_comments(id: number) {
-  const response = await fetch(
-    `https://hacker-news.firebaseio.com/v0/item/${id}.json`,
-  );
-  const data = await response.json();
-  const comments = await Promise.all(
-    data.kids.slice(0, 10).map((id: number) => get_story(id)),
-  );
-  return {
-    ...data,
-    hnUrl: `https://news.ycombinator.com/item?id=${id}`,
-    comments: comments.map((comment: any) => ({
-      ...comment,
-      hnUrl: `https://news.ycombinator.com/item?id=${comment.id}`,
-    })),
-  };
-}
-
-async function summarize_top_story() {
-  const topStory = await get_top_stories(1);
-  return await get_story_with_comments(topStory[0].id);
-}
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
@@ -136,7 +36,6 @@ export async function POST(req: Request) {
       initialResponseMessage.function_call;
     const functionArgs = JSON.parse(args);
     let functionResponse;
-    console.log({ initialResponseMessage });
     if (functionName === "get_top_stories") {
       functionResponse = await get_top_stories(functionArgs.limit);
     } else if (functionName === "get_story") {
