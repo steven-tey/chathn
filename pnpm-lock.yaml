@@ -14,6 +14,9 @@ dependencies:
   '@types/react-dom':
     specifier: 18.2.6
     version: 18.2.6
+  '@vercel/analytics':
+    specifier: ^1.0.1
+    version: 1.0.1
   ai:
     specifier: ^2.1.8
     version: 2.1.8(react@18.2.0)(svelte@3.59.2)(vue@3.3.4)
@@ -458,6 +461,10 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.60.0
       eslint-visitor-keys: 3.4.1
+    dev: false
+
+  /@vercel/analytics@1.0.1:
+    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
     dev: false
 
   /@vue/compiler-core@3.3.4:
