@@ -68,7 +68,16 @@ export default function Chat() {
               Welcome to ChatHN!
             </h1>
             <p className="text-gray-500">
-              This is an open-source AI chatbot that uses{" "}
+              This is an{" "}
+              <a
+                href="https://github.com/steven-tey/chathn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
+              >
+                open-source
+              </a>{" "}
+              AI chatbot that uses{" "}
               <a
                 href="https://platform.openai.com/docs/guides/gpt/function-calling"
                 target="_blank"
