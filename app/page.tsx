@@ -178,7 +178,16 @@ export default function Chat() {
           >
             Vercel AI SDK
           </a>
-          . View the repo or deploy your own.
+          . View the{" "}
+          <a
+            href="https://github.com/steven-tey/chathn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-black"
+          >
+            repo
+          </a>{" "}
+          or deploy your own.
         </p>
       </div>
     </main>
