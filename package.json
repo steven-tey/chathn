@@ -1,25 +1,39 @@
 {
-  "name": "savant",
+  "name": "chathn",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
+    "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "ai": "^2.1.8",
     "autoprefixer": "10.4.14",
+    "clsx": "^1.2.1",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
+    "lucide-react": "^0.252.0",
     "next": "13.4.7",
+    "openai-edge": "^1.1.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-markdown": "^8.0.7",
+    "react-textarea-autosize": "^8.4.1",
+    "remark-gfm": "^3.0.1",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }
