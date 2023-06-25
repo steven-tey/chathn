@@ -196,7 +196,16 @@ export default function Chat() {
           >
             View the repo
           </a>{" "}
-          or deploy your own.
+          or{" "}
+          <a
+            href="https://vercel.com/templates/next.js/chathn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-black"
+          >
+            deploy your own
+          </a>
+          .
         </p>
       </div>
     </main>
