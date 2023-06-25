@@ -17,7 +17,7 @@ const functions: {
   {
     name: "get_top_stories",
     description:
-      "Get the top stories from Hacker News. Also returns the URL to each story.",
+      "Get the top stories from Hacker News. Also returns the Hacker News URL to each story.",
     parameters: {
       type: "object",
       properties: {
@@ -32,7 +32,7 @@ const functions: {
   {
     name: "get_story",
     description:
-      "Get a story from Hacker News. Also returns the URL to the story.",
+      "Get a story from Hacker News. Also returns the Hacker News URL to the story.",
     parameters: {
       type: "object",
       properties: {
@@ -47,7 +47,7 @@ const functions: {
   {
     name: "get_story_with_comments",
     description:
-      "Get a story from Hacker News with comments.  Also returns the URL to the story and each comment.",
+      "Get a story from Hacker News with comments.  Also returns the Hacker News URL to the story and each comment.",
     parameters: {
       type: "object",
       properties: {
@@ -62,7 +62,7 @@ const functions: {
   {
     name: "summarize_top_story",
     description:
-      "Summarize the top story from Hacker News, including both the story and its comments. Also returns the URL to the story and each comment.",
+      "Summarize the top story from Hacker News, including both the story and its comments. Also returns the Hacker News URL to the story and each comment.",
     parameters: {
       type: "object",
       properties: {},
