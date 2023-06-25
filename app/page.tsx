@@ -47,7 +47,7 @@ export default function Chat() {
                 )}
               </div>
               <ReactMarkdown
-                className="prose mt-1 w-full break-words dark:prose-invert prose-p:leading-relaxed"
+                className="prose mt-1 w-full break-words prose-p:leading-relaxed"
                 remarkPlugins={[remarkGfm]}
                 components={{
                   // open links in new tab
