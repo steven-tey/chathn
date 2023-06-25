@@ -1,5 +1,11 @@
+type FunctionNames =
+  | "get_top_stories"
+  | "get_story"
+  | "get_story_with_comments"
+  | "summarize_top_story";
+
 export const functions: {
-  name: string;
+  name: FunctionNames;
   description: string;
   parameters: object;
 }[] = [
@@ -60,7 +66,7 @@ export const functions: {
   },
 ];
 
-export async function get_top_stories(limit: number = 10) {
+async function get_top_stories(limit: number = 10) {
   const response = await fetch(
     "https://hacker-news.firebaseio.com/v0/topstories.json",
   );
@@ -71,7 +77,7 @@ export async function get_top_stories(limit: number = 10) {
   return stories;
 }
 
-export async function get_story(id: number) {
+async function get_story(id: number) {
   const response = await fetch(
     `https://hacker-news.firebaseio.com/v0/item/${id}.json`,
   );
@@ -82,7 +88,7 @@ export async function get_story(id: number) {
   };
 }
 
-export async function get_story_with_comments(id: number) {
+async function get_story_with_comments(id: number) {
   const response = await fetch(
     `https://hacker-news.firebaseio.com/v0/item/${id}.json`,
   );
@@ -100,7 +106,22 @@ export async function get_story_with_comments(id: number) {
   };
 }
 
-export async function summarize_top_story() {
+async function summarize_top_story() {
   const topStory = await get_top_stories(1);
   return await get_story_with_comments(topStory[0].id);
+}
+
+export async function runFunction(name: string, args: any) {
+  switch (name) {
+    case "get_top_stories":
+      return await get_top_stories();
+    case "get_story":
+      return await get_story(args["id"]);
+    case "get_story_with_comments":
+      return await get_story_with_comments(args["id"]);
+    case "summarize_top_story":
+      return await summarize_top_story();
+    default:
+      return null;
+  }
 }

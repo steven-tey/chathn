@@ -1,12 +1,6 @@
 import { Configuration, OpenAIApi } from "openai-edge";
 import { OpenAIStream, StreamingTextResponse } from "ai";
-import {
-  functions,
-  get_top_stories,
-  get_story,
-  get_story_with_comments,
-  summarize_top_story,
-} from "./functions";
+import { functions, runFunction } from "./functions";
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
@@ -32,19 +26,8 @@ export async function POST(req: Request) {
   let finalResponse;
 
   if (initialResponseMessage.function_call) {
-    const { name: functionName, arguments: args } =
-      initialResponseMessage.function_call;
-    const functionArgs = JSON.parse(args);
-    let functionResponse;
-    if (functionName === "get_top_stories") {
-      functionResponse = await get_top_stories(functionArgs.limit);
-    } else if (functionName === "get_story") {
-      functionResponse = await get_story(functionArgs.id);
-    } else if (functionName === "get_story_with_comments") {
-      functionResponse = await get_story_with_comments(functionArgs.id);
-    } else if (functionName === "summarize_top_story") {
-      functionResponse = await summarize_top_story();
-    }
+    const { name, arguments: args } = initialResponseMessage.function_call;
+    const functionResponse = await runFunction(name, JSON.parse(args));
 
     finalResponse = await openai.createChatCompletion({
       model: "gpt-4-0613",
