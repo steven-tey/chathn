@@ -9,6 +9,7 @@ import { Bot, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Textarea from "react-textarea-autosize";
+import { toast } from "sonner";
 
 const examples = [
   "Get me the top 5 stories on Hacker News in markdown table format. Use columns like title, link, score, and comments.",
@@ -21,8 +22,14 @@ export default function Chat() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const { messages, input, setInput, handleSubmit, isLoading } = useChat({
-    onResponse: () => {
-      va.track("Chat initiated");
+    onResponse: (response) => {
+      if (response.status === 429) {
+        toast.error("You have reached your request limit for the day.");
+        va.track("Rate limited");
+        return;
+      } else {
+        va.track("Chat initiated");
+      }
     },
     onError: (error) => {
       va.track("Chat errored", {

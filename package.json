@@ -14,7 +14,9 @@
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "@upstash/ratelimit": "^0.4.3",
     "@vercel/analytics": "^1.0.1",
+    "@vercel/kv": "^0.2.2",
     "ai": "^2.1.8",
     "autoprefixer": "10.4.14",
     "clsx": "^1.2.1",
@@ -29,6 +31,7 @@
     "react-markdown": "^8.0.7",
     "react-textarea-autosize": "^8.4.1",
     "remark-gfm": "^3.0.1",
+    "sonner": "^0.5.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.3"
   },
