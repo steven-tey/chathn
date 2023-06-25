@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { useChat } from "ai/react";
+import va from "@vercel/analytics";
 import clsx from "clsx";
 import { Bot, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
@@ -18,7 +19,17 @@ export default function Chat() {
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const { messages, input, setInput, handleSubmit, isLoading } = useChat();
+  const { messages, input, setInput, handleSubmit, isLoading } = useChat({
+    onResponse: () => {
+      va.track("Chat initiated");
+    },
+    onError: (error) => {
+      va.track("Chat errored", {
+        input,
+        error: error.message,
+      });
+    },
+  });
 
   const disabled = isLoading || input.length === 0;
 
