@@ -7,6 +7,24 @@
   Chat with Hacker News using natural language. Built with OpenAI Functions and Vercel AI SDK. 
 </p>
 
+<p align="center">
+  <a href="https://news.ycombinator.com/item?id=36480570"><img src="https://img.shields.io/badge/Hacker%20News-255-%23FF6600" alt="Hacker News"></a>
+  <a href="https://github.com/steven-tey/chathn/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/steven-tey/chathn?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
+  </a>
+  <a href="https://github.com/steven-tey/chathn"><img src="https://img.shields.io/github/stars/steven-tey/chathn?style=social" alt="ChatHN's GitHub repo"></a>
+</p>
+
+<p align="center">
+  <a href="#introduction"><strong>Introduction</strong></a> ·
+  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
+  <a href="#setting-up-locally"><strong>Setting Up Locally</strong></a> ·
+  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+  <a href="#contributing"><strong>Contributing</strong></a> ·
+  <a href="#license"><strong>License</strong></a>
+</p>
+<br/>
+
 ## Introduction
 
 ChatHN is an open-source AI chatbot that uses [OpenAI Functions](https://platform.openai.com/docs/guides/gpt/function-calling) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with the [Hacker News API](https://github.com/HackerNews/API) with natural language.
