@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://news.ycombinator.com/item?id=36480570"><img src="https://img.shields.io/badge/Hacker%20News-255-%23FF6600" alt="Hacker News"></a>
+  <a href="https://news.ycombinator.com/item?id=36480570"><img src="https://img.shields.io/badge/Hacker%20News-210-%23FF6600" alt="Hacker News"></a>
   <a href="https://github.com/steven-tey/chathn/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/steven-tey/chathn?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
