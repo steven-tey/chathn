@@ -39,13 +39,13 @@ You can deploy your own version of ChatHN with 1-click:
 
 ## Setting Up Locally
 
-To set up Novel locally, you'll need to clone the repository and set up the following environment variables:
+To set up ChatHN locally, you'll need to clone the repository and set up the following environment variables:
 
 - `OPENAI_API_KEY` – your OpenAI API key (you can get one [here](https://platform.openai.com/account/api-keys))
 
 ## Tech Stack
 
-Novel is built on the following stack:
+ChatH is built on the following stack:
 
 - [Next.js](https://nextjs.org/) – framework
 - [OpenAI Functions](https://platform.openai.com/docs/guides/gpt/function-calling) - AI completions
@@ -57,8 +57,8 @@ Novel is built on the following stack:
 
 Here's how you can contribute:
 
-- [Open an issue](https://github.com/steven-tey/novel/issues) if you believe you've encountered a bug.
-- Make a [pull request](https://github.com/steven-tey/novel/pull) to add new features/make quality-of-life improvements/fix bugs.
+- [Open an issue](https://github.com/steven-tey/chathn/issues) if you believe you've encountered a bug.
+- Make a [pull request](https://github.com/steven-tey/chathn/pull) to add new features/make quality-of-life improvements/fix bugs.
 
 ## Author
 
@@ -66,4 +66,4 @@ Here's how you can contribute:
 
 ## License
 
-Licensed under the [MIT license](https://github.com/steven-tey/novel/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/steven-tey/chathn/blob/main/LICENSE.md).
