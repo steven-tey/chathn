@@ -1,14 +1,6 @@
-type FunctionNames =
-  | "get_top_stories"
-  | "get_story"
-  | "get_story_with_comments"
-  | "summarize_top_story";
+import { CompletionCreateParams } from "openai/resources/chat/index";
 
-export const functions: {
-  name: FunctionNames;
-  description: string;
-  parameters: object;
-}[] = [
+export const functions: CompletionCreateParams.Function[] = [
   {
     name: "get_top_stories",
     description:
